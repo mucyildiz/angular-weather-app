@@ -1,14 +1,58 @@
-<div id='searchbar-container'>
-    <form onsubmit='return false' ngNativeValidate (ngSubmit)='getCityWeather()'>
-        <input [(ngModel)]='searchedCity' name='searchedCity' id='searchbar' type='text' placeholder='Enter City Here' required>
-        <div id='search-icon'>
-            <div id='img-container'>
-                <input type='image' id='search-pic' src='assets\images\searchicon.png'>
+<div id='container'>
+
+    <div id='searchbar-container'>
+        <form onsubmit='return false' ngNativeValidate (ngSubmit)='getCityWeather()'>
+            <input [(ngModel)]='searchedCity' name='searchedCity' id='searchbar' type='text' placeholder='Enter City Here' required>
+            <div id='search-icon'>
+                <div id='img-container'>
+                    <input type='image' id='search-pic' src='assets\images\searchicon.png'>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div *ngIf='weatherData' id='weather-container'>
+        <div *ngIf='weatherData' id='weather'>
+            <div id='misc-info'>
+                <div id='left-content-header'>
+                    <div id='city-name'>
+                        <h3>{{weatherData.cityName}}</h3>
+                    </div>
+                    <div id='date-info'>
+                        <p>{{weatherData.dayAndTime.day}}, {{weatherData.dayAndTime.time}}</p>
+                    </div>
+                </div>
+                <div id='right-content-header'>
+                    <button id='change-unit' (click)='toggleDegrees()'>
+                        <div *ngIf='tempInFarenheit'>&#8451;</div>
+                        <div *ngIf='!tempInFarenheit'>&#8457;</div>
+                    </button>
+                </div>
+            </div>
+            <div id='weather-info-container'>
+                <div id='temp-container'>
+                    <div id='temp'>
+
+                        <div class='temp-display' *ngIf='tempInFarenheit'>{{weatherData.temp.currTemp}}&#8457;</div>
+                        <div class='feels-like' *ngIf='tempInFarenheit'>Feels like {{weatherData.temp.feelsLike}}&#8457;</div>
+
+                        <div class='temp-display' *ngIf='!tempInFarenheit'>{{weatherData.temp.celsiusTemp}}&#8451;</div>
+                        <div class='feels-like' *ngIf='!tempInFarenheit'>Feels like {{weatherData.temp.celsiusFeelsLike}}&#8451;</div>  
+
+                    </div>
+                </div>
+                <div id='gif-container'>
+                    <img id='gif' src={{weatherData.weatherGif}}>
+                </div>
+                <div id='description-and-wind'>
+                    <div id='description'>{{weatherData.weather.mainDesc}}</div>
+                    <div id='wind'>
+                        <img id='wind-pic' src='assets/images/wind.png'>
+                        {{weatherData.wind.windSpeed}} mph
+                    </div>
+                </div>
             </div>
         </div>
-    </form>
-</div>
+    </div>
 
-<div *ngIf='weatherData'>
-    <p>{{weatherData.cityName}}</p>
 </div>
