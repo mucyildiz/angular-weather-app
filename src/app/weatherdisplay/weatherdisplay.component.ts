@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WeatherdisplayComponent implements OnInit {
   searchedCity = '';
+  weatherData: object;
 
   constructor() { }
 
@@ -21,10 +22,9 @@ export class WeatherdisplayComponent implements OnInit {
       const response = await fetch(url, {mode: 'cors'});
       const weatherData = await response.json();
       const date = new Date();
-      console.log(weatherData);
+      console.log(typeof(weatherData));
       const cityWeather = {
         cityName: weatherData.name,
-
         temp: {
           currTemp: weatherData.main.temp,
           feelsLike: weatherData.main.feels_like
@@ -42,7 +42,7 @@ export class WeatherdisplayComponent implements OnInit {
         }
       };
       console.log(cityWeather);
-      return cityWeather;
+      this.weatherData = cityWeather;
     }
     catch (err){
       console.log(err);
