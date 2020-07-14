@@ -1,0 +1,39 @@
+#searchbar-container{
+    position: relative;
+}
+
+#search-icon{
+    position: absolute;
+    width: 27.2px;
+    height: 25.2px;
+    right: 0;
+    top: 0;
+}
+
+#searchbar {
+    font-size: 20px;
+    border: 1px solid black;
+    border-radius: 2px;
+    padding: 1px 0 1px 5px;
+    width: 250px;
+}
+
+#img-container {
+    position: relative;
+    height: 27.2px;
+    border-left: 1px solid black;
+    cursor: pointer;
+}
+
+#search-pic{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#search-pic:focus {
+    outline: none;
+}
