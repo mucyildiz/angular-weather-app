@@ -28,14 +28,14 @@ export class WeatherdisplayComponent implements OnInit {
 
   async getCityWeather(): Promise<any>{
     console.log(this.searchedCity);
-    const url = `http://api.openweathermap.org/data/2.5/weather?q=${this.searchedCity}&units=imperial&appid=4d7ae3fa13615ebb6343600dbc80e952`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${this.searchedCity}&units=imperial&appid=4d7ae3fa13615ebb6343600dbc80e952`;
     try{
       const response = await fetch(url, {mode: 'cors'});
       const weatherData = await response.json();
       console.log(weatherData);
       const weatherDescription = weatherData.weather[0].main;
 
-      const gifUrl = `http://api.giphy.com/v1/gifs/translate?api_key=1rWPIu8eWuuDUxz5BIeJh0BnEGjCTHsy&s=${weatherDescription}`;
+      const gifUrl = `https://api.giphy.com/v1/gifs/translate?api_key=1rWPIu8eWuuDUxz5BIeJh0BnEGjCTHsy&s=${weatherDescription}`;
       const gifResponse = await fetch(gifUrl, {mode: 'cors'});
       const gifData = await gifResponse.json();
       const gif = gifData.data.images.original.url;
