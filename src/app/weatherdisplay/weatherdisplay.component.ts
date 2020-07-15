@@ -42,7 +42,7 @@ export class WeatherdisplayComponent implements OnInit {
 
       const date = new Date();
       let minutes;
-      if (date.getMinutes().toString().length == 1){
+      if (date.getMinutes().toString().length === 1){
         minutes = '0'  + date.getMinutes();
       }
       else{
