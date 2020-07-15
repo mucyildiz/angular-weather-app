@@ -41,6 +41,13 @@ export class WeatherdisplayComponent implements OnInit {
       const gif = gifData.data.images.original.url;
 
       const date = new Date();
+      let minutes;
+      if (date.getMinutes().toString().length == 1){
+        minutes = '0'  + date.getMinutes();
+      }
+      else{
+        minutes = date.getMinutes();
+      }
       console.log(typeof(weatherData));
       const cityWeather = {
         cityName: weatherData.name,
@@ -52,7 +59,7 @@ export class WeatherdisplayComponent implements OnInit {
         },
         dayAndTime: {
           day: this.dayOfWeekAsString(date.getDay()),
-          time: date.getHours() + ':' + date.getMinutes()
+          time: date.getHours() + ':' + minutes,
         },
         weather: {
           desc: weatherData.weather[0].description,
